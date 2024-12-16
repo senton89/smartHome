@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartHomeSystem.APIs;
 using SmartHomeSystem.APIs.Common;
@@ -22,7 +21,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Create one Room
     /// </summary>
     [HttpPost()]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<Room>> CreateRoom(RoomCreateInput input)
     {
         var room = await _service.CreateRoom(input);
@@ -34,7 +32,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Delete one Room
     /// </summary>
     [HttpDelete("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRoom([FromRoute()] RoomWhereUniqueInput uniqueId)
     {
         try
@@ -53,7 +50,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Find many Rooms
     /// </summary>
     [HttpGet()]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Room>>> Rooms([FromQuery()] RoomFindManyArgs filter)
     {
         return Ok(await _service.Rooms(filter));
@@ -72,7 +68,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Get one Room
     /// </summary>
     [HttpGet("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<Room>> Room([FromRoute()] RoomWhereUniqueInput uniqueId)
     {
         try
@@ -89,7 +84,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Update one Room
     /// </summary>
     [HttpPatch("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRoom(
         [FromRoute()] RoomWhereUniqueInput uniqueId,
         [FromQuery()] RoomUpdateInput roomUpdateDto
@@ -111,7 +105,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Connect multiple Devices records to Room
     /// </summary>
     [HttpPost("{Id}/devices")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> ConnectDevices(
         [FromRoute()] RoomWhereUniqueInput uniqueId,
         [FromQuery()] DeviceWhereUniqueInput[] devicesId
@@ -133,7 +126,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Disconnect multiple Devices records from Room
     /// </summary>
     [HttpDelete("{Id}/devices")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> DisconnectDevices(
         [FromRoute()] RoomWhereUniqueInput uniqueId,
         [FromBody()] DeviceWhereUniqueInput[] devicesId
@@ -155,7 +147,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Find multiple Devices records for Room
     /// </summary>
     [HttpGet("{Id}/devices")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Device>>> FindDevices(
         [FromRoute()] RoomWhereUniqueInput uniqueId,
         [FromQuery()] DeviceFindManyArgs filter
@@ -175,7 +166,6 @@ public abstract class RoomsControllerBase : ControllerBase
     /// Update multiple Devices records for Room
     /// </summary>
     [HttpPatch("{Id}/devices")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDevices(
         [FromRoute()] RoomWhereUniqueInput uniqueId,
         [FromBody()] DeviceWhereUniqueInput[] devicesId

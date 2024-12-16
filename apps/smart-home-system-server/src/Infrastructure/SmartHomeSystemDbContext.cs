@@ -1,11 +1,9 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SmartHomeSystem.Infrastructure.Models;
 
 namespace SmartHomeSystem.Infrastructure;
 
-public class SmartHomeSystemDbContext : IdentityDbContext<IdentityUser>
+public class SmartHomeSystemDbContext : DbContext
 {
     public SmartHomeSystemDbContext(DbContextOptions<SmartHomeSystemDbContext> options)
         : base(options) { }

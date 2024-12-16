@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartHomeSystem.APIs;
 using SmartHomeSystem.APIs.Common;
@@ -22,7 +21,6 @@ public abstract class SchedulesControllerBase : ControllerBase
     /// Create one Schedule
     /// </summary>
     [HttpPost()]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<Schedule>> CreateSchedule(ScheduleCreateInput input)
     {
         var schedule = await _service.CreateSchedule(input);
@@ -34,7 +32,6 @@ public abstract class SchedulesControllerBase : ControllerBase
     /// Delete one Schedule
     /// </summary>
     [HttpDelete("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteSchedule([FromRoute()] ScheduleWhereUniqueInput uniqueId)
     {
         try
@@ -53,7 +50,6 @@ public abstract class SchedulesControllerBase : ControllerBase
     /// Find many Schedules
     /// </summary>
     [HttpGet()]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Schedule>>> Schedules(
         [FromQuery()] ScheduleFindManyArgs filter
     )
@@ -76,7 +72,6 @@ public abstract class SchedulesControllerBase : ControllerBase
     /// Get one Schedule
     /// </summary>
     [HttpGet("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<Schedule>> Schedule(
         [FromRoute()] ScheduleWhereUniqueInput uniqueId
     )
@@ -95,7 +90,6 @@ public abstract class SchedulesControllerBase : ControllerBase
     /// Update one Schedule
     /// </summary>
     [HttpPatch("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateSchedule(
         [FromRoute()] ScheduleWhereUniqueInput uniqueId,
         [FromQuery()] ScheduleUpdateInput scheduleUpdateDto

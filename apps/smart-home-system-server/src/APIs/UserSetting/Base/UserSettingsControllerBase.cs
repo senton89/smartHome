@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartHomeSystem.APIs;
 using SmartHomeSystem.APIs.Common;
@@ -22,7 +21,6 @@ public abstract class UserSettingsControllerBase : ControllerBase
     /// Create one UserSetting
     /// </summary>
     [HttpPost()]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<UserSetting>> CreateUserSetting(UserSettingCreateInput input)
     {
         var userSetting = await _service.CreateUserSetting(input);
@@ -34,7 +32,6 @@ public abstract class UserSettingsControllerBase : ControllerBase
     /// Delete one UserSetting
     /// </summary>
     [HttpDelete("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteUserSetting(
         [FromRoute()] UserSettingWhereUniqueInput uniqueId
     )
@@ -55,7 +52,6 @@ public abstract class UserSettingsControllerBase : ControllerBase
     /// Find many UserSettings
     /// </summary>
     [HttpGet()]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<List<UserSetting>>> UserSettings(
         [FromQuery()] UserSettingFindManyArgs filter
     )
@@ -78,7 +74,6 @@ public abstract class UserSettingsControllerBase : ControllerBase
     /// Get one UserSetting
     /// </summary>
     [HttpGet("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<UserSetting>> UserSetting(
         [FromRoute()] UserSettingWhereUniqueInput uniqueId
     )
@@ -97,7 +92,6 @@ public abstract class UserSettingsControllerBase : ControllerBase
     /// Update one UserSetting
     /// </summary>
     [HttpPatch("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateUserSetting(
         [FromRoute()] UserSettingWhereUniqueInput uniqueId,
         [FromQuery()] UserSettingUpdateInput userSettingUpdateDto
