@@ -12,4 +12,19 @@ public abstract class YandexIntegrationsServiceBase : IYandexIntegrationsService
     {
         _context = context;
     }
+
+    public async Task<string> DisableStation(string data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<string> IncreaseVolume(string data)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<string> SayHello(string data)
+    {
+        throw new NotImplementedException();
+    }
 }
