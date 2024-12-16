@@ -157,7 +157,7 @@ public abstract class SchedulesServiceBase : ISchedulesService
             .Schedules.Where(schedule => schedule.Id == uniqueId.Id)
             .Include(schedule => schedule.Device)
             .FirstOrDefaultAsync();
-        if (schedule == null)
+        if (schedule == null || schedule.Device == null)
         {
             throw new NotFoundException();
         }

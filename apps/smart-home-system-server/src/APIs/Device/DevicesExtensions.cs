@@ -35,7 +35,7 @@ public static class DevicesExtensions
 
         if (updateDto.CreatedAt != null)
         {
-            device.CreatedAt = updateDto.CreatedAt.Value;
+            device.CreatedAt = updateDto.CreatedAt ?? DateTime.Now.ToUniversalTime(); //.Value;
         }
         if (updateDto.Room != null)
         {
@@ -43,7 +43,7 @@ public static class DevicesExtensions
         }
         if (updateDto.UpdatedAt != null)
         {
-            device.UpdatedAt = updateDto.UpdatedAt.Value;
+            device.UpdatedAt = DateTime.Now.ToUniversalTime(); //updateDto.UpdatedAt.Value.ToUniversalTime();
         }
 
         return device;

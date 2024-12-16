@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartHomeSystem.APIs;
 using SmartHomeSystem.APIs.Common;
@@ -22,7 +21,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Create one Device
     /// </summary>
     [HttpPost()]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<Device>> CreateDevice(DeviceCreateInput input)
     {
         var device = await _service.CreateDevice(input);
@@ -34,7 +32,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Delete one Device
     /// </summary>
     [HttpDelete("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDevice([FromRoute()] DeviceWhereUniqueInput uniqueId)
     {
         try
@@ -53,7 +50,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Find many Devices
     /// </summary>
     [HttpGet()]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Device>>> Devices([FromQuery()] DeviceFindManyArgs filter)
     {
         return Ok(await _service.Devices(filter));
@@ -74,7 +70,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Get one Device
     /// </summary>
     [HttpGet("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<Device>> Device([FromRoute()] DeviceWhereUniqueInput uniqueId)
     {
         try
@@ -91,7 +86,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Update one Device
     /// </summary>
     [HttpPatch("{Id}")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDevice(
         [FromRoute()] DeviceWhereUniqueInput uniqueId,
         [FromQuery()] DeviceUpdateInput deviceUpdateDto
@@ -125,7 +119,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Connect multiple Schedules records to Device
     /// </summary>
     [HttpPost("{Id}/schedules")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> ConnectSchedules(
         [FromRoute()] DeviceWhereUniqueInput uniqueId,
         [FromQuery()] ScheduleWhereUniqueInput[] schedulesId
@@ -147,7 +140,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Disconnect multiple Schedules records from Device
     /// </summary>
     [HttpDelete("{Id}/schedules")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> DisconnectSchedules(
         [FromRoute()] DeviceWhereUniqueInput uniqueId,
         [FromBody()] ScheduleWhereUniqueInput[] schedulesId
@@ -169,7 +161,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Find multiple Schedules records for Device
     /// </summary>
     [HttpGet("{Id}/schedules")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Schedule>>> FindSchedules(
         [FromRoute()] DeviceWhereUniqueInput uniqueId,
         [FromQuery()] ScheduleFindManyArgs filter
@@ -189,7 +180,6 @@ public abstract class DevicesControllerBase : ControllerBase
     /// Update multiple Schedules records for Device
     /// </summary>
     [HttpPatch("{Id}/schedules")]
-    [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateSchedules(
         [FromRoute()] DeviceWhereUniqueInput uniqueId,
         [FromBody()] ScheduleWhereUniqueInput[] schedulesId
