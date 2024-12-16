@@ -8,7 +8,7 @@ COPY *.csproj .config ./
 RUN dotnet restore
 RUN dotnet tool restore 
 
-# Copy everything
+# Copy everything 
 COPY . ./
 RUN dotnet csharpier .
 
