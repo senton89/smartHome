@@ -29,9 +29,7 @@ builder.Services.AddCors(builder =>
         }
     );
 });
-builder.Services.AddDbContext<SmartHomeSystemDbContext>(opt =>
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
+
 builder.Services.AddDbContext<SmartHomeSystemDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
