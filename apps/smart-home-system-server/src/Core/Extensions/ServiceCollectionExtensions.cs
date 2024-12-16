@@ -10,6 +10,7 @@ public static class ServiceCollectionExtensions
     public static void RegisterServices(this IServiceCollection services)
     {
         services.AddScoped<IDevicesService, DevicesService>();
+        services.AddScoped<IOAuthsService, OAuthsService>();
         services.AddScoped<IRoomsService, RoomsService>();
         services.AddScoped<ISchedulesService, SchedulesService>();
         services.AddScoped<IUserSettingsService, UserSettingsService>();
