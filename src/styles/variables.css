@@ -1,0 +1,23 @@
+/* Цвета */
+:root {
+    --primary-color: #007bff; /* Основной цвет */
+    --primary-color-hover: #0056b3; /* Цвет при наведении на кнопки */
+    --success-color: #28a745; /* Цвет успеха */
+    --error-color: #dc3545; /* Цвет ошибки */
+    --background-color: #f4f4f4; /* Цвет фона */
+    --text-color: #333; /* Цвет текста */
+    --white-color: #ffffff; /* Белый цвет */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Цвет тени */
+}
+
+/* Шрифты */
+:root {
+    --font-family: 'Arial', sans-serif; /* Основной шрифт */
+}
+
+/* Размеры */
+:root {
+    --max-width: 800px; /* Максимальная ширина контейнера */
+    --padding: 20px; /* Отступы */
+    --border-radius: 5px; /* Радиус границ */
+}
