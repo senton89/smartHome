@@ -29,26 +29,25 @@ public abstract class DevicesServiceBase : IDevicesService
             Name = createDto.Name,
             Status = createDto.Status,
             TypeField = createDto.TypeField,
-            UpdatedAt = createDto.UpdatedAt
+            UpdatedAt = createDto.UpdatedAt,
+            RoomId = createDto.RoomId,
         };
 
         if (createDto.Id != null)
         {
             device.Id = createDto.Id;
         }
-        if (createDto.Room != null)
+        if (createDto.RoomId != null)
         {
             device.Room = await _context
-                .Rooms.Where(room => createDto.Room.Id == room.Id)
+                .Rooms.Where(room => createDto.RoomId == room.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.Schedules != null)
+        if (createDto.SchedulesId != null)
         {
             device.Schedules = await _context
-                .Schedules.Where(schedule =>
-                    createDto.Schedules.Select(t => t.Id).Contains(schedule.Id)
-                )
+                .Schedules.Where(schedule => createDto.SchedulesId.Contains(schedule.Id))
                 .ToListAsync();
         }
 

@@ -10,9 +10,9 @@ public class DeviceCreateInput
 
     public string? Name { get; set; }
 
-    public Room? Room { get; set; }
+    public string? RoomId { get; set; }
 
-    public List<Schedule>? Schedules { get; set; }
+    public List<string>? SchedulesId { get; set; }
 
     public StatusEnum? Status { get; set; }
 

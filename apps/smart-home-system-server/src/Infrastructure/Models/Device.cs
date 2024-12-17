@@ -22,7 +22,7 @@ public class DeviceDbModel
     [ForeignKey(nameof(RoomId))]
     public RoomDbModel? Room { get; set; } = null;
 
-    public List<ScheduleDbModel>? Schedules { get; set; } = new List<ScheduleDbModel>();
+    public List<ScheduleDbModel>? Schedules { get; set; } = new();
 
     public StatusEnum? Status { get; set; }
 

@@ -15,20 +15,20 @@ public abstract class YandexIntegrationsControllerBase : ControllerBase
     }
 
     [HttpPost("disable-station")]
-    public async Task<string> DisableStation([FromBody()] string data)
+    public async Task<string> DisableStation()
     {
-        return await _service.DisableStation(data);
+        return await _service.DisableStation("disable-station");
     }
 
     [HttpPost("increase-volume")]
-    public async Task<string> IncreaseVolume([FromBody()] string data)
+    public async Task<string> IncreaseVolume()
     {
-        return await _service.IncreaseVolume(data);
+        return await _service.IncreaseVolume("increase-volume");
     }
 
     [HttpPost("say-hello")]
-    public async Task<string> SayHello([FromBody()] string data)
+    public async Task<string> SayHello()
     {
-        return await _service.SayHello(data);
+        return await _service.SayHello("hello");
     }
 }

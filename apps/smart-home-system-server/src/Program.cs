@@ -25,8 +25,24 @@ builder.Services.AddCors(builder =>
         "MyCorsPolicy",
         policy =>
         {
-            policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(["localhost"]).AllowCredentials();
+            policy
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .WithOrigins("http://localhost:3000", "https://localhost:3000")
+                .AllowCredentials();
         }
+    );
+});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "AllowOrigin",
+        builder =>
+            builder
+                .WithOrigins("http://localhost:3000", "https://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
     );
 });
 
@@ -35,7 +51,7 @@ builder.Services.AddDbContext<SmartHomeSystemDbContext>(opt =>
 );
 var app = builder.Build();
 
-app.UseCors();
+app.UseCors("AllowOrigin");
 
 if (app.Environment.IsDevelopment())
 {
