@@ -1,23 +1,32 @@
 import React from 'react';
+import './DeviceCard.css'; // Импортируем стили
 
 const DeviceCard = ({ device, onEdit, onDelete }) => {
+    const schedule = "12:00 - 15:00";
+
     return (
-        <div className="bg-purple-50 p-4 rounded-lg shadow">
-            <h3 className="text-purple-700 font-semibold">{device.name}</h3>
-            <p className="text-purple-600">Status: {device.status}</p>
+        <div className="device-card">
+            <h3 className="device-card-title">{device.name}</h3>
+            <p className="device-card-status">Status: {device.status}</p>
+            <div className="device-card-content">
             <div className="flex justify-between mt-2">
                 <button
-                    className="text-purple-600 hover:text-purple-800"
+                    className="device-card-button"
                     onClick={() => onEdit(device)}
                 >
                     Edit
                 </button>
                 <button
-                    className="text-red-600 hover:text-red-800"
+                    className="device-card-button device-card-button-delete"
                     onClick={() => onDelete(device.id)}
                 >
                     Delete
                 </button>
+            </div>
+            <div className="schedule-container">
+                <h2 className="device-card-title">Schedule</h2>
+                <p className="device-card-schedule">{schedule}</p>
+            </div>
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createRoom, updateRoom } from '../../services/roomService';
+import './RoomForm.css'; // Импортируем стили
 
 const RoomForm = ({ room, onSuccess }) => {
     const [name, setName] = useState(room ? room.name : '');
@@ -17,23 +18,30 @@ const RoomForm = ({ room, onSuccess }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Room Name"
-                required
-            />
-            <input
-                type="number"
-                value={floor}
-                onChange={(e) => setFloor(e.target.value)}
-                placeholder="Floor"
-                required
-            />
-            <button type="submit">{room ? 'Update' : 'Create'} Room</button>
-        </form>
+        <div className="room-form-container">
+            <h2 className="room-form-title">{room ? 'Update Room' : 'Create Room'}</h2>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Room Name"
+                    required
+                    className="room-form-input"
+                />
+                <input
+                    type="number"
+                    value={floor}
+                    onChange={(e) => setFloor(e.target.value)}
+                    placeholder="Floor"
+                    required
+                    className="room-form-input"
+                />
+                <button type="submit" className="room-form-button">
+                    {room ? 'Update' : 'Create'} Room
+                </button>
+            </form>
+        </div>
     );
 };
 

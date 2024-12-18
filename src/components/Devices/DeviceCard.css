@@ -1,0 +1,59 @@
+/* DeviceCard.css */
+
+.device-card {
+    margin-bottom: 2vh;
+    background-color: #f3e8ff; /* bg-purple-50 */
+    padding: 16px; /* p-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow */
+    transition: transform 0.2s; /* Плавный переход для эффекта при наведении */
+}
+
+.device-card:hover {
+    transform: scale(1.05); /* Увеличение при наведении */
+}
+
+.device-card-title {
+    color: #6b46c1; /* text-purple-700 */
+    font-weight: 600; /* font-semibold */
+    font-size: 1.125rem; /* text-lg */
+}
+
+.device-card-status {
+    color: #4c51bf; /* text-purple-600 */
+}
+.device-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.device-card-button {
+    color: #6b46c1; /* text-purple-600 */
+    transition: color 0.2s; /* Плавный переход для кнопок */
+}
+
+.device-card-button:hover {
+    color: #4c51bf; /* hover:text-purple-800 */
+}
+
+.device-card-button-delete {
+    color: #e53e3e; /* text-red-600 */
+}
+
+.device-card-button-delete:hover {
+    color: #c53030; /* hover:text-red-800 */
+}
+
+.device-card-schedule {
+    color: #4a5568; /* Цвет для расписания */
+    font-weight: 500; /* Полужирный шрифт */
+    margin-left: auto; /* Расположить текст расписания справа */
+}
+
+.schedule-container {
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+    /*margin-top: 1.5rem; !* Отступ сверху *!*/
+}

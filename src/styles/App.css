@@ -1,22 +1,33 @@
 /* Общие стили для всего приложения */
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
+    margin: 8vh;
     padding: 0;
-    background-color: #f4f4f4;
+    background: radial-gradient(circle, darkslateblue, slateblue); /* Радиальный градиент */
     color: #333;
 }
 
 /* Основной контейнер приложения */
 .app-container {
-    max-width: 800px;
+    /*max-width: 800px;*/
     margin: 0 auto;
-    padding: 20px;
+    min-height: 100vh; /* min-h-screen */
+    padding: 1rem; /* p-4 */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Заголовки */
-h1, h2, h3 {
-    color: #007bff;
+/*h1, h2, h3 {*/
+/*    color: gold;*/
+/*}*/
+
+.app-title {
+    font-size: 2rem; /* text-3xl */
+    font-weight: bold; /* font-bold */
+    text-align: center; /* text-center */
+    color: gold; /* text-purple-800 */
+    margin-bottom: 1.5rem; /* mb-6 */
 }
 
 /* Кнопки */
@@ -29,7 +40,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: plum;
     color: white;
 }
 
@@ -70,4 +81,25 @@ input[type="text"] {
 
 .alert-error {
     background-color: #dc3545;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1; /* flex-grow */
+    margin-top: 1rem; /* mt-4 */
+    border: 2px #111;
+    border-radius: 10px;
+}
+
+.room-details {
+    flex-grow: 1; /* flex-grow */
+    margin-right: 1rem; /* mr-4 */
+}
+
+.yandex-integration {
+    display: flex;
+    max-width: 20vh;
+    justify-content: space-between;
+    padding-left: 2vw;
+    width: 300px; /* Задайте фиксированную ширину для YandexIntegration */
 }

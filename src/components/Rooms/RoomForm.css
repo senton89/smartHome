@@ -1,0 +1,40 @@
+/* RoomForm.css */
+
+.room-form-container {
+    background-color: #ffffff; /* bg-white */
+    padding: 16px; /* p-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    max-width: 400px; /* Максимальная ширина формы */
+    margin: 0 auto; /* Центрирование формы */
+}
+
+.room-form-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    color: #6b46c1; /* text-purple-800 */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.room-form-input {
+    border: 1px solid #d1d5db; /* border-gray-300 */
+    padding: 0.5rem; /* p-2 */
+    border-radius: 0.375rem; /* rounded */
+    width: 95%; /* Полная ширина */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.room-form-button {
+    background-color: #6b46c1; /* bg-purple-600 */
+    color: #ffffff; /* text-white */
+    padding: 0.5rem; /* p-2 */
+    border-radius: 0.375rem; /* rounded */
+    border: none; /* Убираем границу */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color 0.2s; /* Плавный переход для фона */
+    width: 100%; /* Полная ширина */
+}
+
+.room-form-button:hover {
+    background-color: #5a3e9d; /* Темнее при наведении */
+}

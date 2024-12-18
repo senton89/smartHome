@@ -4,10 +4,29 @@ import { getDevices, deleteDevice } from '../../services/deviceService';
 const DeviceList = () => {
     const [devices, setDevices] = useState([]);
 
+    const testDevices = [
+        {
+            id:"1",
+            name:"device1",
+            room:"1"
+        },
+        {
+            id:"2",
+            name:"device2",
+            room:"1"
+        },
+        {
+            id:"3",
+            name:"device3",
+            room:"1"
+        }
+    ]
+
     useEffect(() => {
         const fetchDevices = async () => {
-            const data = await getDevices({});
-            setDevices(data);
+            // const data = await getDevices({});
+            // setDevices(data);
+            setDevices(testDevices);
         };
         fetchDevices();
     }, []);

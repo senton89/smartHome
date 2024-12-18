@@ -1,0 +1,40 @@
+/* TopBar.css */
+
+.topbar-container {
+    display: flex;
+    align-items: center; /* Центрирование по вертикали */
+    background-color: #ffffff; /* bg-white */
+    padding: 16px; /* p-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+    margin-bottom: 1rem; /* Отступ снизу для разделения с другими элементами */
+}
+
+.room-button {
+    color: #6b46c1; /* text-purple-600 */
+    font-weight: 600; /* font-semibold */
+    padding: 8px 12px; /* Отступы для кнопок */
+    border: none; /* Убираем границу */
+    background: none; /* Убираем фон */
+    cursor: pointer; /* Указатель при наведении */
+    transition: color 0.2s; /* Плавный переход для цвета */
+}
+
+.room-button:hover {
+    color: #4c51bf; /* text-purple-800 при наведении */
+}
+
+.add-room-button {
+    color: #6b46c1; /* text-purple-600 */
+    font-weight: 600; /* font-semibold */
+    font-size: 1.5rem; /* Увеличенный размер шрифта для кнопки добавления */
+    padding: 8px; /* Отступы для кнопки */
+    border: none; /* Убираем границу */
+    background: none; /* Убираем фон */
+    cursor: pointer; /* Указатель при наведении */
+    transition: color 0.2s; /* Плавный переход для цвета */
+}
+
+.add-room-button:hover {
+    color: #4c51bf; /* text-purple-800 при наведении */
+}

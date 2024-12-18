@@ -1,5 +1,6 @@
 import React from 'react';
 import { disableStation, increaseVolume, sayHello } from '../../services/yandexIntegrationService';
+import './YandexIntegration.css'; // Импортируем стили
 
 const YandexIntegration = () => {
     const handleDisableStation = async () => {
@@ -18,16 +19,16 @@ const YandexIntegration = () => {
     };
 
     return (
-        <div className="bg-white p-4 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-purple-800">Yandex Integration</h2>
-            <div className="mt-4 space-y-2">
-                <button className="bg-purple-600 text-white p-2 rounded" onClick={handleDisableStation}>
+        <div className="yandex-integration-container">
+            <h2 className="yandex-integration-title">Yandex Integration</h2>
+            <div className="yandex-integration-buttons">
+                <button className="yandex-integration-button" onClick={handleDisableStation}>
                     Disable Station
                 </button>
-                <button className="bg-purple-600 text-white p-2 rounded" onClick={handleIncreaseVolume}>
+                <button className="yandex-integration-button" onClick={handleIncreaseVolume}>
                     Increase Volume
                 </button>
-                <button className="bg-purple-600 text-white p-2 rounded" onClick={handleSayHello}>
+                <button className="yandex-integration-button" onClick={handleSayHello}>
                     Say Hello
                 </button>
             </div>
