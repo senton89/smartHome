@@ -21,6 +21,13 @@ const getDevice = async (deviceId) => {
     return response.data;
 };
 
+const getDevicesByRoom = async (roomId) => {
+    console.log(roomId);
+    const response = await axios.get(`${API_URL}`);
+    console.log(response.data);
+    return response.data.filter(device => device.room.toString() === roomId);
+};
+
 const updateDevice = async (deviceId, deviceData) => {
     await axios.patch(`${API_URL}/${deviceId}`, deviceData);
 };
@@ -42,6 +49,7 @@ export {
     createDevice,
     deleteDevice,
     getDevices,
+    getDevicesByRoom,
     getDevice,
     updateDevice,
     connectSchedules,

@@ -14,6 +14,7 @@ const RoomForm = ({ room, onSuccess }) => {
         } else {
             await createRoom(roomData);
         }
+        location.reload();
         onSuccess();
     };
 
