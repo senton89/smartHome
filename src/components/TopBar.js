@@ -19,6 +19,7 @@ const TopBar = ({ onSelectRoom }) => {
     const handleAddRoom = async (roomData) => {
         try {
             const createdRoom = await createRoom(roomData);
+            console.log(roomData);
             setRooms((prevRooms) => [...prevRooms, createdRoom]); // Update the rooms list
             setIsFormVisible(false); // Hide the form after adding
         } catch (error) {

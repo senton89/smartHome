@@ -22,7 +22,7 @@ const getRoom = async (roomId) => {
 };
 
 const updateRoom = async (roomId, roomData) => {
-    await axios.patch(`${API_URL}/${roomId}`, roomData);
+    await axios.patch(`http://localhost:5202/api/rooms/${roomId}?Floor=${roomData.floor}&Name=${roomData.name}`);
 };
 
 const connectDevices = async (roomId, devices) => {

@@ -75,6 +75,7 @@ const RoomDetails = ({ room, onEditDevice, onDeleteDevice }) => {
                         <p>No devices found in this room.</p>
                     </div>
                 )}
+            </div>
                 <div className="add-device-form">
                     <input
                         type="text"
@@ -113,7 +114,6 @@ const RoomDetails = ({ room, onEditDevice, onDeleteDevice }) => {
                     <button className="add-device-button" onClick={handleAddDevice}>
                         Add Device
                     </button>
-                </div>
                 <div className="schedules-list">
                     <h3>Schedules</h3>
                     {schedules.length > 0 ? (

@@ -16,7 +16,7 @@
 .device-card-container {
     margin-top: 1rem; /* mt-4 */
     display: flex;
-    flex-direction: column; /* Вертикальное расположение карточек устройств */
+    flex-direction: row; /* Вертикальное расположение карточек устройств */
     gap: 1rem; /* space-y-4 */
 }
 

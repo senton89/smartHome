@@ -25,11 +25,11 @@ const getDevicesByRoom = async (roomId) => {
     console.log(roomId);
     const response = await axios.get(`${API_URL}`);
     console.log(response.data);
-    return response.data.filter(device => device.room.toString() === roomId);
+    return response.data.filter(device => device.room === roomId);
 };
 
 const updateDevice = async (deviceId, deviceData) => {
-    await axios.patch(`${API_URL}/${deviceId}`, deviceData);
+    await axios.patch(`http://localhost:5202/api/devices/${deviceId}?Name=${deviceData.name}&RoomId=${deviceData.roomId}&Status=${deviceData.status}&TypeField=${deviceData.type}`);
 };
 
 const connectSchedules = async (deviceId, schedules) => {
