@@ -25,30 +25,20 @@ public abstract class DevicesServiceBase : IDevicesService
     {
         var device = new DeviceDbModel
         {
-            CreatedAt = createDto.CreatedAt,
+            CreatedAt = DateTime.Now.ToUniversalTime(),
             Name = createDto.Name,
             Status = createDto.Status,
             TypeField = createDto.TypeField,
-            UpdatedAt = createDto.UpdatedAt,
+            UpdatedAt = DateTime.Now.ToUniversalTime(),
             RoomId = createDto.RoomId,
         };
 
-        if (createDto.Id != null)
-        {
-            device.Id = createDto.Id;
-        }
+        device.Id = Guid.NewGuid().ToString();
         if (createDto.RoomId != null)
         {
             device.Room = await _context
                 .Rooms.Where(room => createDto.RoomId == room.Id)
                 .FirstOrDefaultAsync();
-        }
-
-        if (createDto.SchedulesId != null)
-        {
-            device.Schedules = await _context
-                .Schedules.Where(schedule => createDto.SchedulesId.Contains(schedule.Id))
-                .ToListAsync();
         }
 
         _context.Devices.Add(device);
@@ -129,21 +119,54 @@ public abstract class DevicesServiceBase : IDevicesService
     {
         var device = updateDto.ToModel(uniqueId);
 
-        if (updateDto.Room != null)
+        if (updateDto.RoomId != null)
         {
             device.Room = await _context
-                .Rooms.Where(room => updateDto.Room == room.Id)
+                .Rooms.Where(room => updateDto.RoomId == room.Id)
                 .FirstOrDefaultAsync();
         }
 
-        if (updateDto.Schedules != null)
-        {
-            device.Schedules = await _context
-                .Schedules.Where(schedule =>
-                    updateDto.Schedules.Select(t => t).Contains(schedule.Id)
-                )
-                .ToListAsync();
-        }
+        // if (updateDto.Schedules != null)
+        // {
+        //     var searched = await _context
+        //         .Schedules.Where(schedule =>
+        //             updateDto.Schedules.Select(t => t.StartTime.ToString()).Contains(schedule.StartTime.ToString())
+        //             && updateDto.Schedules.Select(t => t.EndTime.ToString()).Contains(schedule.EndTime.ToString())
+        //         )
+        //         .ToListAsync();
+        //
+        //     if (searched.Count == 0)
+        //     {
+        //         // Создаем новые расписания
+        //         List<Schedule> newSchedules = new List<Schedule>();
+        //
+        //         foreach (var scheduleDto in updateDto.Schedules)
+        //         {
+        //             var newSchedule = new Schedule
+        //             {
+        //                 Id = Guid.NewGuid().ToString(), // Генерируем новый уникальный идентификатор
+        //                 CreatedAt = DateTime.UtcNow,
+        //                 UpdatedAt = DateTime.UtcNow,
+        //                 Device = scheduleDto.Device,
+        //                 StartTime = updateDto.Schedules[0].StartTime,
+        //                 EndTime = updateDto.Schedules[0].StartTime
+        //             };
+        //
+        //             newSchedules.Add(newSchedule);
+        //         }
+        //
+        //         await _context.Schedules.AddRangeAsync(newSchedules);
+        //         await _context.SaveChangesAsync();
+        //
+        //         // Присваиваем новые расписания устройству
+        //         device.Schedules = newSchedules;
+        //     }
+        //     else
+        //     {
+        //         // Если расписания найдены, присваиваем их устройству
+        //         device.Schedules = searched;
+        //     }
+        // }
 
         _context.Entry(device).State = EntityState.Modified;
 

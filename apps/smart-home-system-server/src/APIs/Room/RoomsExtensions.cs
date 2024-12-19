@@ -27,15 +27,6 @@ public static class RoomsExtensions
             Name = updateDto.Name
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            room.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            room.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
-
         return room;
     }
 }

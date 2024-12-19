@@ -10,7 +10,7 @@ public class DeviceWhereInput
 
     public string? Name { get; set; }
 
-    public string? Room { get; set; }
+    public string? RoomId { get; set; }
 
     public List<string>? Schedules { get; set; }
 

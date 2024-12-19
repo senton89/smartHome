@@ -2,15 +2,7 @@ namespace SmartHomeSystem.APIs.Dtos;
 
 public class ScheduleCreateInput
 {
-    public DateTime CreatedAt { get; set; }
-
-    public Device? Device { get; set; }
-
+    public string? DeviceId { get; set; }
     public DateTime? EndTime { get; set; }
-
-    public string? Id { get; set; }
-
     public DateTime? StartTime { get; set; }
-
-    public DateTime UpdatedAt { get; set; }
 }

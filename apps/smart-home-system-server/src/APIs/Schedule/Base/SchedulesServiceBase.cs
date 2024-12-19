@@ -25,20 +25,18 @@ public abstract class SchedulesServiceBase : ISchedulesService
     {
         var schedule = new ScheduleDbModel
         {
-            CreatedAt = createDto.CreatedAt,
+            CreatedAt = DateTime.Now.ToUniversalTime(),
             EndTime = createDto.EndTime,
             StartTime = createDto.StartTime,
-            UpdatedAt = createDto.UpdatedAt
+            UpdatedAt = DateTime.Now.ToUniversalTime()
         };
 
-        if (createDto.Id != null)
-        {
-            schedule.Id = createDto.Id;
-        }
-        if (createDto.Device != null)
+        schedule.Id = Guid.NewGuid().ToString();
+
+        if (createDto.DeviceId != null)
         {
             schedule.Device = await _context
-                .Devices.Where(device => createDto.Device.Id == device.Id)
+                .Devices.Where(device => createDto.DeviceId == device.Id)
                 .FirstOrDefaultAsync();
         }
 

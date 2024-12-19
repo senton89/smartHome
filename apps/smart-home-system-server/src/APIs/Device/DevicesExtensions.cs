@@ -1,4 +1,5 @@
 using SmartHomeSystem.APIs.Dtos;
+using SmartHomeSystem.Infrastructure;
 using SmartHomeSystem.Infrastructure.Models;
 
 namespace SmartHomeSystem.APIs.Extensions;
@@ -33,18 +34,14 @@ public static class DevicesExtensions
             TypeField = updateDto.TypeField
         };
 
-        if (updateDto.CreatedAt != null)
+        device.CreatedAt = DateTime.Now.ToUniversalTime();
+
+        if (updateDto.RoomId != null)
         {
-            device.CreatedAt = updateDto.CreatedAt ?? DateTime.Now.ToUniversalTime(); //.Value;
+            device.RoomId = updateDto.RoomId;
         }
-        if (updateDto.Room != null)
-        {
-            device.RoomId = updateDto.Room;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            device.UpdatedAt = DateTime.Now.ToUniversalTime(); //updateDto.UpdatedAt.Value.ToUniversalTime();
-        }
+
+        device.UpdatedAt = DateTime.Now.ToUniversalTime(); //updateDto.UpdatedAt.Value.ToUniversalTime();
 
         return device;
     }

@@ -25,22 +25,13 @@ public abstract class RoomsServiceBase : IRoomsService
     {
         var room = new RoomDbModel
         {
-            CreatedAt = createDto.CreatedAt,
+            CreatedAt = DateTime.Now.ToUniversalTime(),
             Floor = createDto.Floor,
             Name = createDto.Name,
-            UpdatedAt = createDto.UpdatedAt
+            UpdatedAt = DateTime.Now.ToUniversalTime()
         };
 
-        if (createDto.Id != null)
-        {
-            room.Id = createDto.Id;
-        }
-        if (createDto.Devices != null)
-        {
-            room.Devices = await _context
-                .Devices.Where(device => createDto.Devices.Select(t => t.Id).Contains(device.Id))
-                .ToListAsync();
-        }
+        room.Id = Guid.NewGuid().ToString();
 
         _context.Rooms.Add(room);
         await _context.SaveChangesAsync();
@@ -115,16 +106,10 @@ public abstract class RoomsServiceBase : IRoomsService
     /// <summary>
     /// Update one Room
     /// </summary>
+    ///
     public async Task UpdateRoom(RoomWhereUniqueInput uniqueId, RoomUpdateInput updateDto)
     {
         var room = updateDto.ToModel(uniqueId);
-
-        if (updateDto.Devices != null)
-        {
-            room.Devices = await _context
-                .Devices.Where(device => updateDto.Devices.Select(t => t).Contains(device.Id))
-                .ToListAsync();
-        }
 
         _context.Entry(room).State = EntityState.Modified;
 
